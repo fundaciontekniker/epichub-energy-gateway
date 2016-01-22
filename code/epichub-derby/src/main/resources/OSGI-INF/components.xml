@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="epichub.framework.gateway.db.derbyMng">
+  <implementation class="epichub.framework.gateway.db.derby.DerbyMngActivator"/>
+</component>

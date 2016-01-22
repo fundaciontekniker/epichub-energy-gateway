@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_configOption" table="gateway_configOption" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="parameter" column="Parameter" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				parameter name
+			</meta>
+		</property>
+		<property name="type" column="Type" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Parameter digital type. Can be string, number or array.
+			</meta>
+		</property>
+		<property name="value" column="Value" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Value of the parameter. If the type is array the value will be a string with a list of values separated by "|" character
+			</meta>
+		</property>
+	</class>
+</hibernate-mapping>

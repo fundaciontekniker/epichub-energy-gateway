@@ -1,0 +1,18 @@
+dependencies {
+  compile group: 'org.apache.felix', name: 'javax.servlet', version: '1.0.0'
+  compile files('../dependencies/openmuc-core-api-0.13.1.jar')  
+  compile files('../dependencies/openmuc-core-spi-0.13.1.jar')  
+  
+  compile files('../dependencies/org.apache.felix-4.4.1.jar')
+  
+  compile files('../dependencies/slf4j-api-1.7.7.jar')  
+    
+  compile project(':epichub-derby-model') 
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - SPI"
+    instruction 'Export-Package', '*'
+  }
+}

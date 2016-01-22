@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="epichub.framework.gateway.core">
+  <implementation class="epichub.framework.gateway.core.CoreServiceImpl" />
+    <service>
+    <provide interface="epichub.framework.gateway.spi.CoreService" />
+  </service>
+  <reference name="dataAccessService"
+	     interface="org.openmuc.framework.dataaccess.DataAccessService"
+	     bind="setDataAccessService"
+	     unbind="unsetDataAccessService"
+	     cardinality="1..1" />
+  <reference name="configService"
+	     interface="org.openmuc.framework.config.ConfigService"
+	     bind="setConfigService"
+	     unbind="unsetConfigService"
+	     cardinality="1..1" />
+  <reference name="databaseService"
+         interface="epichub.framework.gateway.spi.DatabaseService"
+         bind="setDatabaseService"
+         unbind="unsetDatabaseService"
+         cardinality="1..1"/>
+  <reference name="publishService" 
+ 	     interface="epichub.framework.gateway.interfaces.middleware.GatewayService" 
+ 	     bind="setPublishService" 
+ 	     unbind="unsetPublishService" 
+ 	     cardinality="0..1" 
+ 	     policy="dynamic" /> 
+  <reference name="subscriberService"
+         interface="epichub.framework.gateway.spi.SubscriberService"
+         bind="setSubscriberService"
+         unbind="unsetSubscriberService"
+         cardinality="1..1"/>
+   <reference name="driverService" 
+          interface="org.openmuc.framework.driver.spi.DriverService" 
+          bind="setDriverService" 
+          unbind="unsetDriverService" 
+          cardinality="0..n"  
+          policy="dynamic" /> 
+<!--    <reference name="driverListeningService" -->
+<!-- 	     interface="epichub.framework.gateway.spi.DriverListeningService" -->
+<!-- 	     bind="setDriverListeningService" -->
+<!-- 	     unbind="unsetDriverListeningService" -->
+<!-- 	     cardinality="0..n" -->
+<!-- 	     policy="dynamic" /> -->
+</component>

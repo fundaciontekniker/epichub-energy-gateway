@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="epichub.framework.gateway.core.subscriber">
+  <implementation class="epichub.framework.gateway.core.SubscriberCollection" />
+    <service>
+    <provide interface="epichub.framework.gateway.spi.SubscriberService" />
+  </service> 
+<!--   <reference name="databaseService" -->
+<!--          interface="epichub.framework.gateway.spi.DatabaseService" -->
+<!--          bind="setDatabaseService" -->
+<!--          unbind="unsetDatabaseService" -->
+<!--          cardinality="1..1"/> -->
+<!--   <reference name="dataAccessService" -->
+<!-- 	     interface="org.openmuc.framework.dataaccess.DataAccessService" -->
+<!-- 	     bind="setDataAccessService" -->
+<!-- 	     unbind="unsetDataAccessService" -->
+<!-- 	     cardinality="1..1" /> -->
+</component>
+
+
+<!-- <?xml version="1.0" encoding="utf-8" ?> -->
+<!-- <component name="epichub.framework.gateway.core.subscriber"> -->
+<!--   <implementation class="epichub.framework.gateway.core.SubscriberLogger" /> -->
+<!--     <service> -->
+<!--     <provide interface="epichub.framework.gateway.spi.SubscriberService" /> -->
+<!--     <provide interface="org.openmuc.framework.datalogger.spi.DataLoggerService"></provide> -->
+<!--   </service>  -->
+<!-- </component> -->

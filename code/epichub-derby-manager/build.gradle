@@ -1,0 +1,15 @@
+dependencies {
+  compile files('../dependencies/org.apache.felix-4.4.1.jar')
+  compile files('../dependencies/org.apache.felix.scr-1.8.2.jar')
+  compile project(':epichub-spi') 
+  compile project(':epichub-derby-model') 
+  
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - Derby Manager"
+    //instruction 'Import-Package', '!org.apache.log4j,!org.orm*,!org.hibernate*,javax.naming*,*'
+    instruction 'Service-Component', 'OSGI-INF/components.xml'
+  }
+}

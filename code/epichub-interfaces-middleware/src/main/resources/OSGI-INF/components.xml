@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="epichub.framework.gateway.interface.client">
+  <implementation class="epichub.framework.gateway.interfaces.middleware.GatewayClient"/>
+   <service>
+    <provide interface="epichub.framework.gateway.interfaces.middleware.GatewayService"/>
+  </service>
+	     
+  <reference name="databaseService"
+         interface="epichub.framework.gateway.spi.DatabaseService"
+         bind="setDatabaseService"
+         unbind="unsetDatabaseService"
+         cardinality="1..1"/>
+	    
+   <reference name="coreService"
+         interface="epichub.framework.gateway.spi.CoreService"
+         bind="setCoreService"
+         unbind="unsetCoreService"
+         cardinality="0..1"
+         policy="static"/>	    
+	     
+</component>

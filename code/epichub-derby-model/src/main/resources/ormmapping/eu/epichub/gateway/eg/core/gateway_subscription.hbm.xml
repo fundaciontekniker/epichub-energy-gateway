@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_subscription" table="gateway_subscription" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="subscriber" cascade="lock" column="fk_gateway_subscriber" class="eu.epichub.gateway.eg.core.gateway_subscriber" not-null="true" lazy="false">
+		</many-to-one>
+		<property name="id" column="Id" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="minInt" column="MinInt" type="long" not-null="true" lazy="false"/>
+		<property name="maxInt" column="MaxInt" type="long" not-null="true" lazy="false"/>
+		<property name="state" column="State" type="string" length="255" not-null="true" lazy="false"/>
+		<set name="variables" table="gateway_subscription_gateway_variable" lazy="true" cascade="save-update,lock">
+			<key column="fk_gateway_subscription" not-null="true"/>
+			<many-to-many column="fk_gateway_variable" class="eu.epichub.gateway.eg.core.gateway_variable">
+			</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_variable" table="gateway_variable" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="device" cascade="lock" column="fk_gateway_device" class="eu.epichub.gateway.eg.core.gateway_device" not-null="true" lazy="false">
+		</many-to-one>
+		<property name="id" column="Id" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="description" column="Description" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="digType" column="DigType" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="phyType" column="PhyType" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="unit" column="Unit" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="state" column="State" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				State of variable if it is subscribed. Can be enabled, disabled, error
+			</meta>
+		</property>
+		<property name="accessType" column="AccessType" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Acces Type can be Read, Write or Read/Write
+			</meta>
+		</property>
+		<property name="path" column="Path" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Protocol dependent representation
+			</meta>
+		</property>
+		<property name="expirationDate" type="long" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Date of expiration. Variable will be not longer valid
+			</meta>
+			<column name="ExpirationDate" default="0"/>
+		</property>
+		<property name="samplingInterval" type="long" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Sampling interval if it is read periodically.
+			</meta>
+			<column name="SamplingInterval" default="0"/>
+		</property>
+		<property name="absoluteError" type="double" not-null="true" lazy="false">
+			<column name="AbsoluteError" default="0"/>
+		</property>
+		<property name="percentageError" type="integer" not-null="true" lazy="false">
+			<column name="PercentageError" default="0"/>
+		</property>
+		<set name="subscriptions" table="gateway_subscription_gateway_variable" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="fk_gateway_variable" not-null="true"/>
+			<many-to-many column="fk_gateway_subscription" class="eu.epichub.gateway.eg.core.gateway_subscription">
+			</many-to-many>
+		</set>
+		<set name="values" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="fk_gateway_variable" not-null="true"/>
+			<one-to-many class="eu.epichub.gateway.eg.core.gateway_value"/>
+		</set>
+		<set name="setpoints" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="fk_gateway_variable" not-null="true"/>
+			<one-to-many class="eu.epichub.gateway.eg.core.gateway_setpoint"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+dependencies {
+  compile files('../dependencies/openmuc-core-api-0.13.1.jar')
+  compile files('../dependencies/org.apache.felix.http.bundle-2.3.0.jar')
+  compile project(':epichub-core')
+  compile project(':epichub-interfaces-middleware') 
+  //compile group: 'org.apache.felix', name: 'javax.servlet', version: '1.0.0'
+  compile files('../dependencies/org.apache.felix-4.4.1.jar')
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - RESTful Web Service 2.0"
+    instruction 'Service-Component', 'OSGI-INF/components.xml'
+  }
+}

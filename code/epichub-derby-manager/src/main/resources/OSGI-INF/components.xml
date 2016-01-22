@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="derbyDatabaseManager">
+	<implementation
+		class="epichub.framework.gateway.db.derby.manage.DatabaseServiceImpl" />
+	<service>
+		<provide interface="epichub.framework.gateway.spi.DatabaseService" />
+	</service>
+</component>

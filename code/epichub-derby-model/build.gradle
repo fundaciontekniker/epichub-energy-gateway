@@ -1,0 +1,23 @@
+configurations.create('embed')
+
+dependencies {
+  compile files('../dependencies/openmuc-core-spi-0.13.1.jar')
+  compile files('../dependencies/orm.jar')
+  embed files('../dependencies/orm.jar')
+  compile files('../dependencies/derbyclient.jar')
+  embed files('../dependencies/derbyclient.jar')
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - Derby DB Model"
+    instruction 'Bundle-ClassPath', '.,lib/orm.jar,lib/derbyclient.jar'
+    instruction 'Export-Package', 'eu.epichub.gateway.eg.*,org.orm,org.orm.criteria,org.hibernate,'
+    instruction 'Import-Package', '!org.apache.log4j'//,!org.orm*,!,javax.naming*,*'
+  }
+}
+jar {
+  into('lib') {
+    from configurations.embed
+  }
+}

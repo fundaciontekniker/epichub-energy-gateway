@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_driver" table="gateway_driver" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="host" cascade="lock" column="fk_gateway_host" class="eu.epichub.gateway.eg.core.gateway_host" not-null="true" lazy="false">
+		</many-to-one>
+		<property name="id" column="Id" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="name" column="Name" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="state" column="State" type="string" length="255" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Driver state, can be enabled, disabled o error
+			</meta>
+		</property>
+		<property name="subscriptions" column="Subscriptions" type="boolean" not-null="true" lazy="false">
+			<meta attribute="field-description">
+				Indica si el driver es capaz de gestionar subscripciones por si mismo o no
+			</meta>
+		</property>
+		<property name="description" column="Description" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="operations" column="Operations" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="devices" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="fk_gateway_driver" not-null="true"/>
+			<one-to-many class="eu.epichub.gateway.eg.core.gateway_device"/>
+		</set>
+	</class>
+</hibernate-mapping>

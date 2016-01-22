@@ -1,0 +1,15 @@
+dependencies {
+  compile files('../dependencies/org.apache.felix-4.4.1.jar')
+  compile files('../dependencies/openmuc-core-spi-0.13.1.jar') 
+  compile files('../dependencies/slf4j-api-1.7.7.jar') 
+  //compile project(':epichub-common-util') 
+  compile 'org.apache.servicemix.bundles:org.apache.servicemix.bundles.derby:10.9.1.0_1'
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - Derby Management"
+    instruction 'Bundle-Activator','epichub.framework.gateway.db.derby.DerbyMngActivator'
+    instruction 'Service-Component', 'OSGI-INF/components.xml'
+  }
+}

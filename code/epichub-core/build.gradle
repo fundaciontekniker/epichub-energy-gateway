@@ -1,0 +1,18 @@
+configurations.create('embed')
+
+dependencies {
+
+  compile files('../dependencies/openmuc-core-api-0.13.1.jar')
+  compile files('../dependencies/openmuc-core-spi-0.13.1.jar')
+  compile project(':epichub-spi')
+  compile project(':epichub-derby-manager')
+  compile project(':epichub-interfaces-middleware') 
+}
+
+jar {
+  manifest {
+    name = "EpicHUB - Core Services"     
+    instruction 'Service-Component', 'OSGI-INF/components.xml,OSGI-INF/subscriber.xml'
+  }
+}
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_setpoint" table="gateway_setpoint" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<many-to-one name="variable" cascade="lock" column="fk_gateway_variable" class="eu.epichub.gateway.eg.core.gateway_variable" not-null="true" lazy="false">
+		</many-to-one>
+		<property name="name" column="Name" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="description" column="Description" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="value" column="Value" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="time" column="Time" type="long" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

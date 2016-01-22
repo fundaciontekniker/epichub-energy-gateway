@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: 
+License Type: Evaluation
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="eu.epichub.gateway.eg.core.gateway_location" table="gateway_location" lazy="false">
+		<id name="dbID" column="DbID" type="long" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="id" column="Id" unique="true" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="country" column="Country" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="city" column="City" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="zip" column="Zip" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="address" column="Address" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="lat" column="Lat" type="double" not-null="true" lazy="false"/>
+		<property name="lon" column="Lon" type="double" not-null="true" lazy="false"/>
+		<property name="height" column="Height" type="double" not-null="true" lazy="false"/>
+		<one-to-one name="host" class="eu.epichub.gateway.eg.core.gateway_host" cascade="save-update,lock" property-ref="location" lazy="false"/>
+		<one-to-one name="device" class="eu.epichub.gateway.eg.core.gateway_device" cascade="save-update,lock" property-ref="location" lazy="false"/>
+	</class>
+</hibernate-mapping>

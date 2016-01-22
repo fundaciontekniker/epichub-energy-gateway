@@ -1,0 +1,34 @@
+[0.1] -2015/09/15
+-Start of gateway versioning
+-All EPIC-HUB drivers available
+-Working Derby database
+-Working configuration load
+-Working subscription mechanism
+-Middleware communications: Device and varaible state updates, monitored data
+-REST server
+-Logging mechanism
+
+
+[0.2] -2015/10/01
+-Fixed bug in communication with middleware: some exception were NOT properly handled
+
+[0.3] -2015/10/06
+-Fixed bug in driver loading, which caused the errors in the configuration loading.
+-Fixed minor bug in logging messages from the REST server
+
+[0.4] -2015/10/23
+-Send values of variables to the subscribers of the subscription
+-Middleware Mock jar : obtained with apache cxf wsdl2java from middleware WSDL of thales
+-Middleware Mock war : obtained with apache cxf wsdl2java from middleware WSDL of thales
+-Check Variables Values against the Middleware
+
+[0.5] -2015/11/05
+- New bundle epichub-driver.dummy: based on opemuc-driver-dummy project for DEMO purposes .
+- Update Bundle InterfacesMiddleware : Get Predefined event received from middleware for DEMO and invoke coreService.writeData variable "urn:rixf:eu.epichub/resource/variables/bec_center/state_CL_N5_34" with random value
+- Update Core to removeChannel only if variable not used at OPEN subscription
+
+[0.6] -2016/01/21
+-Added configuration parameter to enable/disable VariableValues : epichub.check_variables_value=true/false
+-Fixed Bug at LoadSubscribers when the subscriber info is not right, or subscriber connection returns Exception
+-Logging messages review : Change DEBUG to ERROR, comment no necessary log messages
+-BUG: Added  Timeout Connection to Interfaces Middleware requests

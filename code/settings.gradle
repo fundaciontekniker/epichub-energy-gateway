@@ -1,0 +1,11 @@
+include 'epichub-spi','epichub-core','epichub-server-restws','epichub-derby','epichub-interfaces-middleware','epichub-derby-model','epichub-derby-manager'
+
+project(":epichub-spi").projectDir= file("epichub-spi")
+project(":epichub-core").projectDir= file("epichub-core")
+project(":epichub-server-restws").projectDir=file("epichub-server-restws-2.0")
+project(":epichub-derby").projectDir=file("epichub-derby")
+project(":epichub-interfaces-middleware").projectDir=file("epichub-interfaces-middleware")
+project(":epichub-derby-model").projectDir=file("epichub-derby-model")
+project(":epichub-derby-manager").projectDir=file("epichub-derby-manager")
+
+
