@@ -1,8 +1,8 @@
-﻿# EPICHUB-ENERGY-GATEWAY
+﻿# EPIC-HUB-ENERGY-GATEWAY
 
-This is the code repository of the EPICHUB ENERGY GATEWAY.
+This is the code repository of the EPIC-HUB ENERGY GATEWAY.
 
-The ENERGY GATEWAY is part of the [EPICHUB][epichub1] project 
+The ENERGY GATEWAY is part of the [EPIC-HUB][epichub1] project 
 
 #Requirements
 
